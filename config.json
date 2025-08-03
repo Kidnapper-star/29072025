@@ -1,0 +1,6 @@
+{
+	"port": "8080",
+	"file_types": [".pdf", ".jpeg"],
+	"max_tasks": 3,
+	"temp_folder": "files"
+}
