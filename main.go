@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
-	"strconv"
 )
 
 type CfgData struct {
@@ -53,11 +53,11 @@ func main() {
 		log.Fatalf("Can't create folder: %v", err)
 	}
 
-	http.HandleFunc("/tasks", createTask) // Создание новой задачи
-	http.HandleFunc("/tasks/", taskHandler) // Обработка задач: статус или добавление файлов
+	http.HandleFunc("/tasks", createTask)      // Создание новой задачи
+	http.HandleFunc("/tasks/", taskHandler)    // Обработка задач: статус или добавление файлов
 	http.HandleFunc("/archives/", sendArchive) // Отдача архива по ссылке
 
-	log.Println("serverport:", cfg.Port) // Запуск сервера
+	log.Println("serverport:", cfg.Port)              // Запуск сервера
 	log.Fatal(http.ListenAndServe(":"+cfg.Port, nil)) // Запуск HTTP сервера
 }
 
